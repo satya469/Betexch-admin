@@ -14,7 +14,7 @@ export default function SessionInplay() {
   const [sessionData, setSessionData] = React.useState([]);
   const [inPlayData, setInPlayData] = React.useState([]);
   useEffect(() => {
-    setInterval(() => getList(), 1000);
+    getList();
     getInPlayList();
   }, []);
   async function getList() {
@@ -27,7 +27,7 @@ export default function SessionInplay() {
 
   async function getSession() {
     await axios
-      .post("/owner/createSession", { gameId: gameId }, options)
+      .post("/owner/create-session", { gameId: gameId }, options)
       .then(async (resp) => {
         setData(resp.data.data);
         getList();

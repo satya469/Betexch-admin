@@ -9,6 +9,7 @@ const Owner = require("../model/owner");
 const auth = require("../middleware/auth");
 var sessionCheck = require('../middleware/tokencheck');
 var tool = require("../tools");
+const cron = require("node-cron");
 var axios = require('axios')
 const app = express();
 app.use(express.json());
@@ -589,45 +590,110 @@ app.post("/match-bhav", sessionCheck.isOwner, upload.none(), async (req, res) =>
 
 // api to create a session
 app.post("/create-session", upload.none(), async (req, res) => {
-    let url = `http://172.105.63.10:3000/getdata/${31881888}`;
-    await axios.get(url).then(resp => {
-        console.log('------------->',JSON.stringify(resp.data));
-    })
-    // try {
-    //     const { market_id, name } = req.body;
-    //     const count = await Session.estimatedDocumentCount();
-    //     const id = count + 1;
+  let gameId = req.body.gameId;
+  let url = `http://172.105.63.10:3000/getdata/${gameId}`;
 
-    //     await Session.create({
-    //         sno: id,
-    //         id: id,
-    //         market_id,
-    //         name
-    //     });
-    //     res.status(201).json({ status: 201, message: "New Session Created", success: true, data: name });
+  cron.schedule("*/1 * * * * *", async function () {
+    await axios
+      .get(url)
+      .then(async (resp) => {
+        let data = JSON.parse(JSON.stringify(resp.data));
+        if (data.length < 1) {
+          return res.status(201).json({
+            status: 201,
+            message: "No Session Found",
+            success: false,
+            data: null,
+          });
+        }
+        data["f"].map(async (_session) => {
+          const { sid, nat, b1, l1, bs1, ls1 } = _session;
+          let existingSession = await Session.find({
+            sessionId: sid,
+            matchId: gameId,
+          });
+          if (existingSession.length > 0) {
+            //update session data
+            await Session.updateOne(
+              { sessionId: sid, matchId: gameId },
+              {
+                $set: {
+                  yesRun: b1,
+                  yesRate: bs1,
+                  noRun: l1,
+                  noRate: ls1,
+                },
+              }
+            );
+          } else {
+            await Session.create({
+              sessionId: sid,
+              matchId: gameId,
+              sessionName: nat,
+              yesRun: b1,
+              yesRate: bs1,
+              noRun: l1,
+              noRate: ls1,
+            });
+          }
+        });
+        let finalData = await Session.find({ matchId: gameId });
 
-    // } catch (err) {
-    //     console.log(err);
-    //     res.status(200).json({ status: 200, message: "Internal server error", success: false, data: null });
-    // }
+        return res.status(201).json({
+          status: 201,
+          message: "New Session Created",
+          success: true,
+          data: finalData,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.status(200).json({
+          status: 200,
+          message: "No Session Found catch",
+          success: false,
+          data: null,
+        });
+      });
+  });
 });
 
 
 //  returns a list of all sessions for a particular match
-app.post("/sessions-list", sessionCheck.isOwner, upload.none(), async (req, res) => {
+app.post(
+  "/sessions-list",
+  sessionCheck.isOwner,
+  upload.none(),
+  async (req, res) => {
     try {
-        const { market_id } = req.body;
-        const sessions = await Session.find({ market_id }).exec();
-        if (sessions.length < 1) {
-            res.status(400).json({ status: 400, message: "No sessions created yet!", success: false, data: null });
-        } else {
-            res.status(200).json({ status: 200, message: "Sessions for match : " + market_id, success: true, data: sessions });
-        }
+      const { matchId } = req.body;
+      const sessions = await Session.find({ matchId }).exec();
+      if (sessions.length < 1) {
+        res.status(400).json({
+          status: 400,
+          message: "No sessions created yet!",
+          success: false,
+          data: null,
+        }); 
+      } else {
+        res.status(200).json({
+          status: 200,
+          message: "Sessions for match : " + matchId,
+          success: true,
+          data: sessions,
+        });
+      }
     } catch (err) {
-        console.log(err);
-        res.status(200).json({ status: 200, message: "Internal server error", success: false, data: null });
+      console.log(err);
+      res.status(200).json({
+        status: 200,
+        message: "Internal server error",
+        success: false,
+        data: null,
+      });
     }
-});
+  }
+);
 
 
 //  api to change setting of a session
