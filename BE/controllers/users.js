@@ -4311,4 +4311,57 @@ app.get("/logout", (req, res) => {
   res.redirect("/index");
 });
 
+//Get user Profile
+app.get("/user-profile", sessionCheck.isAuth, async (req, res) => {
+  const userId = req.user.uid;
+
+  const results = await User.findOne({ uid: userId });
+
+  if (!results) {
+    return res.status(200).json({
+      status: 200,
+      message: "No User found.",
+      success: false,
+      data: null,
+    });
+  }
+
+  return res.status(200).json({
+    status: 200,
+    message: "User Profile",
+    success: true,
+    data: results,
+  });
+});
+
+//get user profile by userId
+app.post(
+  "/user-profile-byId",
+  sessionCheck.isAuth,
+  upload.none(),
+  async (req, res) => {
+    const { userId } = req.body;
+
+    const results = await User.findOne({ uid: userId });
+
+    if (!results) {
+      return res.status(200).json({
+        status: 200,
+        message: "No User found.",
+        success: false,
+        data: null,
+      });
+    }
+
+    return res.status(200).json({
+      status: 200,
+      message: "User Profile",
+      success: true,
+      data: results,
+    });
+  }
+);
+
+
+
 module.exports = app;

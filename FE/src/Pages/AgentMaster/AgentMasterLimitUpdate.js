@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Sidebar from "../../components/Sidebar";
+// import Sidebar from "../../components/Sidebar";
 import { ToastContainer, toast } from "react-toastify";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -7,7 +7,7 @@ import axios from "axios";
 export default function AgentMasterLimitUpdate() {
   const [limit, setLimit] = useState([]);
   useEffect(() => {
-    userProfile()
+    userProfile();
   }, []);
   ////////////token localStorage//////
   const token = localStorage.getItem("token");
@@ -20,9 +20,9 @@ export default function AgentMasterLimitUpdate() {
     axios.get(`/user-profile`, options).then((res) => {
       const data = res.data.data;
       console.log(data);
-      setLimit(data.limit)
+      setLimit(data.limit);
     });
-  }
+  };
   const userlist = async () => {
     axios.get(`/admins/my-agents`, options).then((res) => {
       const data = res.data.data;
@@ -53,7 +53,7 @@ export default function AgentMasterLimitUpdate() {
             //navigate(`/poll`);
             toast.success(data.message);
             e.target.reset();
-            userProfile()
+            userProfile();
             return userlist();
           }
         }
@@ -64,105 +64,105 @@ export default function AgentMasterLimitUpdate() {
   };
   return (
     <>
-      <Sidebar />
-      <div className="content-wrapper">
-        <section className="content-header">
-          <div className="container-fluid">
-            <div className="row">
-              <div className="col-8">
-                <div className="card card card-indigo">
-                  <div className="card-header ">
-                    <h4>Agent Master Coin Details</h4>
-                    <h5>Total Limit : {limit}</h5>
-                  </div>
-                  <table
-                    id=""
-                    className="table table-bordered dt-responsive nowra text-center"
-                  >
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Current Limit</th>
-                        <th>Add/Minus Limit </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {data && data.length != 0 ? (
-                        <>
-                          {data.map((item, index) => {
-                            return (
-                              <>
-                                <tr key={index}>
-                                  <td>{item.name} </td>
-                                  <td>{item.limit} </td>
-                                  <td className="limit_am">
-                                    <form onSubmit={(e) => myFormData(e)}>
-                                      <input
-                                        type="hidden"
-                                        name="uid"
-                                        value={item.uid}
-                                      />
-                                      <input
-                                        type="number"
-                                        name="limit"
-                                        min={0}
-                                        max={limit}
-                                        className="form-control table-input mr-3"
-                                        style={{
-                                          width: "50%",
-                                          display: "inline-block",
-                                        }}
-                                        required
-                                      />
-                                      <button
-                                        type="submit"
-                                        name="Plusbtn"
-                                        id="plus-btn"
-                                        value="1"
-                                        className="btn btn-success"
-                                        onClick={(e) => {
-                                          setPlusMinusValue(e.target.value);
-                                        }}
-                                      >
-                                        Add
-                                      </button>
-                                      &nbsp;
-                                      <button
-                                        id="minus-btn"
-                                        type="submit"
-                                        name="Minusbtn"
-                                        value="0"
-                                        className="btn btn-danger"
-                                        onClick={(e) => {
-                                          setPlusMinusValue(e.target.value);
-                                        }}
-                                      >
-                                        Minus
-                                      </button>
-                                    </form>
-                                  </td>
-                                </tr>
-                              </>
-                            );
-                          })}
-                        </>
-                      ) : (
-                        <>
-                          <tr>
-                            <td colSpan={12} className="text-center p-5">
-                              <h6 className="p-5">No records to display</h6>
-                            </td>
-                          </tr>
-                        </>
-                      )}
-                    </tbody>
-                  </table>
+      {/* <Sidebar /> */}
+      {/* <div className="content-wrapper"> */}
+      <section className="content-header">
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-8">
+              <div className="card card card-indigo">
+                <div className="card-header ">
+                  <h4>Agent Master Coin Details</h4>
+                  <h5>Total Limit : {limit}</h5>
                 </div>
+                <table
+                  id=""
+                  className="table table-bordered dt-responsive nowra text-center"
+                >
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Current Limit</th>
+                      <th>Add/Minus Limit </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data && data.length != 0 ? (
+                      <>
+                        {data.map((item, index) => {
+                          return (
+                            <>
+                              <tr key={index}>
+                                <td>{item.name} </td>
+                                <td>{item.limit} </td>
+                                <td className="limit_am">
+                                  <form onSubmit={(e) => myFormData(e)}>
+                                    <input
+                                      type="hidden"
+                                      name="uid"
+                                      value={item.uid}
+                                    />
+                                    <input
+                                      type="number"
+                                      name="limit"
+                                      min={0}
+                                      max={limit}
+                                      className="form-control table-input mr-3"
+                                      style={{
+                                        width: "50%",
+                                        display: "inline-block",
+                                      }}
+                                      required
+                                    />
+                                    <button
+                                      type="submit"
+                                      name="Plusbtn"
+                                      id="plus-btn"
+                                      value="1"
+                                      className="btn btn-success"
+                                      onClick={(e) => {
+                                        setPlusMinusValue(e.target.value);
+                                      }}
+                                    >
+                                      Add
+                                    </button>
+                                    &nbsp;
+                                    <button
+                                      id="minus-btn"
+                                      type="submit"
+                                      name="Minusbtn"
+                                      value="0"
+                                      className="btn btn-danger"
+                                      onClick={(e) => {
+                                        setPlusMinusValue(e.target.value);
+                                      }}
+                                    >
+                                      Minus
+                                    </button>
+                                  </form>
+                                </td>
+                              </tr>
+                            </>
+                          );
+                        })}
+                      </>
+                    ) : (
+                      <>
+                        <tr>
+                          <td colSpan={12} className="text-center p-5">
+                            <h6 className="p-5">No records to display</h6>
+                          </td>
+                        </tr>
+                      </>
+                    )}
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+      {/* </div> */}
     </>
   );
 }

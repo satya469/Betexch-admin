@@ -125,10 +125,8 @@ app.post(
 
       const role = "subadmin",
         status = "active";
-      if (
-        !(password && name && contact_no && limit && share && commissionType)
-      ) {
-        res.status(200).json({
+      if (!(password && name && contact_no && limit && share)) {
+        return res.status(200).json({
           status: 200,
           message: "All input is required",
           succes: false,
@@ -174,7 +172,7 @@ app.post(
       });
     } catch (err) {
       console.log(err);
-      res
+      return res
         .status(200)
         .json({ staus: 200, message: err, success: false, data: null });
     }
@@ -594,7 +592,7 @@ app.post(
             oldValue: oldUser[_key],
             newValue: req.body[_key],
             updatedBy: owner_uid,
-            ip: req.ip + req.token.split(".")[0],
+            // ip: req.ip + req.token.split(".")[0],
             lastActivity: new Date(),
             date_time: new Date(),
           };
@@ -603,7 +601,7 @@ app.post(
 
         console.log("------------>", results);
         //save login report data...
-        await loginReport.insertMany(results);
+        // await loginReport.insertMany(results);
 
         results = {};
       }
@@ -698,7 +696,7 @@ app.post(
             oldValue: oldUser[_key],
             newValue: req.body[_key],
             updatedBy: owner_uid,
-            ip: req.ip + req.token.split(".")[0],
+            // ip: req.ip + req.token.split(".")[0],
             lastActivity: new Date(),
             date_time: new Date(),
           };
@@ -707,7 +705,7 @@ app.post(
 
         console.log("------------>", results);
         //save login report data...
-        await loginReport.insertMany(results);
+        // await loginReport.insertMany(results);
 
         results = {};
       }
@@ -802,14 +800,14 @@ app.post(
             oldValue: oldUser[_key],
             newValue: req.body[_key],
             updatedBy: owner_uid,
-            ip: req.ip + req.token.split(".")[0],
+            // ip: req.ip + req.token.split(".")[0],
             lastActivity: new Date(),
             date_time: new Date(),
           };
         });
 
         //save login report data...
-        await loginReport.insertMany(results);
+        // await loginReport.insertMany(results);
       }
       const updated_user = await User.findOne({ uid });
       let updatedLimit = 0;
@@ -900,14 +898,14 @@ app.post(
             oldValue: oldUser[_key],
             newValue: req.body[_key],
             updatedBy: owner_uid,
-            ip: req.ip + req.token.split(".")[0],
+            // ip: req.ip + req.token.split(".")[0],
             lastActivity: new Date(),
             date_time: new Date(),
           };
         });
 
         //save login report data...
-        await loginReport.insertMany(results);
+        // await loginReport.insertMany(results);
       }
       const updated_user = await User.find({ uid });
       let updatedLimit = 0;
@@ -996,14 +994,14 @@ app.post(
             oldValue: oldUser[_key],
             newValue: req.body[_key],
             updatedBy: owner_uid,
-            ip: req.ip + req.token.split(".")[0],
+            // ip: req.ip + req.token.split(".")[0],
             lastActivity: new Date(),
             date_time: new Date(),
           };
         });
 
         //save login report data...
-        await loginReport.insertMany(results);
+        // await loginReport.insertMany(results);
       }
       const updated_user = await User.find({ uid });
 

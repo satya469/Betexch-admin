@@ -19,8 +19,34 @@ import MatchBetDetails from "./Pages/MatchBetDetails";
 import Reports from "./Pages/Reports";
 import SessionBetDetails from "./Pages/SessionBetDetails";
 import SessionPMList from "./Pages/SessionPMList";
+///subadmin route
 import SubadminList from "./Pages/Subadmin/SubadminList";
-// import UsersList from "./Pages/UsersList";
+import CreateNewSubadmin from "./Pages/Subadmin/CreateNewSubadmin";
+import UpdateSubadmin from "./Pages/Subadmin/UpdateSubadmin";
+import SubadminLimitUpdate from "./Pages/Subadmin/SubadminLimitUpdate";
+//Master routes
+import MasterList from "./Pages/Master/MasterList";
+import CreateNewMaster from "./Pages/Master/CreateNewMaster";
+import UpdateMaster from "./Pages/Master/UpdateMaster";
+import MasterLimitUpdate from "./Pages/Master/MasterLimitUpdate";
+// import ClientMasterLimitUpdate from "./Pages/Master/ClientMasterLimitUpdate";
+//Super Agent Routes
+import SuperAgentList from "./Pages/SuperAgent/SuperAgenetList";
+import UpdateSuperAgent from "./Pages/SuperAgent/UpdateSuperAgent";
+import CreateNewSuperAgent from "./Pages/SuperAgent/CreateNewSuperAgent";
+import SuperAgentLimitUpdate from "./Pages/SuperAgent/SuperAgentLimitUpdate";
+//Agent routes
+import AgentMaster from "./Pages/AgentMaster/AgentMaster";
+import CreateNewAgent from "./Pages/AgentMaster/CreateNewAgent";
+import AgentMasterLimitUpdate from "./Pages/AgentMaster/AgentMasterLimitUpdate";
+import UpdateAgent from "./Pages/AgentMaster/UpdateAgent";
+//Clint routes
+import ClientMasterlist from "./Pages/ClientMaster/ClientMasterlist";
+import CreateNewClientMaster from "./Pages/ClientMaster/CreateNewClientMaster";
+import UpdateClient from "./Pages/ClientMaster/UpdateClient";
+import ClientMasterLimitUpdate from "./Pages/ClientMaster/ClientMasterLimitUpdate";
+
+// import CreateNewClientMaster from "./Pages/ClientMaster/CreateNewClientMaster";
 import AgentLedger from "./Pages/LedgerManagement/AgentLedger";
 import ClientLedger from "./Pages/LedgerManagement/ClientLedger";
 import MasterLedger from "./Pages/LedgerManagement/MasterLedger";
@@ -31,20 +57,6 @@ import AgentLoginReport from "./Pages/LoginReports/AgentLoginReport";
 import MasterLoginReport from "./Pages/LoginReports/MasterLoginReport";
 import SuperAgentLoginReport from "./Pages/LoginReports/SuperAgentReport";
 import ClientCashTransaction from "./Pages/CashTransaction/ClientCashTransaction";
-// import ClientList from "./Pages/UsersList/ClientList";
-import ClientMasterlist from "./Pages/ClientMaster/ClientMasterlist";
-// import AgentList from "./Pages/UsersList/AgentList";
-import AgentMaster from "./Pages/AgentMaster/AgentMaster";
-// import SuperAgentList from "./Pages/UsersList/SuperAgentList";
-import SuperAgentList from "./Pages/SuperAgent/SuperAgenetList";
-// import MasterList from "./Pages/UsersList/MasterList";
-import MasterList from "./Pages/Master/MasterList";
-import AgentCreate from "./Pages/CreateUser/AgentCreate";
-import SuperAgentCreate from "./Pages/CreateUser/SuperAgentCreate";
-import MasterCreate from "./Pages/CreateUser/MasterCreate";
-import ClinetCreate from "./Pages/CreateUser/ClinetCreate";
-import SuperAgentLimitUpdate from "./Pages/UpdateLimit/SuperAgentLimitUpdate";
-
 ///////////////control panel ////////
 import ControlLogin from "./ControlPanel/ControlLogin";
 import PrivateRoute from "./PrivateRoute";
@@ -57,9 +69,7 @@ import AllMatches from "./ControlPanel/AllMatches";
 // import UserMyLedger from "./ClientPanel/UserMyLedger";
 // import UserProfile from "./ClientPanel/UserProfile";
 // import UserCasino from "./ClientPanel/UserCasino";
-import MasterLimitUpdate from "./Pages/UpdateLimit/MasterLimitUpdate";
-import AgentLimitUpdate from "./Pages/UpdateLimit/AgentLimitUpdate";
-import ClientLimitUpdate from "./Pages/UpdateLimit/ClientLimitUpdate";
+// import ClientLimitUpdate from "./Pages/UpdateLimit/ClientLimitUpdate";
 import InPlayList from "./ControlPanel/InPlay";
 import SessionInplay from "./ControlPanel/SessionInplay";
 import SessionMinMaxLimit from "./ControlPanel/SessionMinMaxLimit";
@@ -77,12 +87,12 @@ function App() {
         <Routes>
           {/* ////////login panel //////////// */}
           {/* <Route path="/user-login" element={<UserLogin />} />
-          <Route path="/user-ledger" element={ <UserMyLedger/> } />
-          <Route path="/user-complete-game" element={ <UserCompletegame/> } />
-          <Route path="/user-profile" element={ <UserProfile/> } />
-          <Route path="/user-inplay" element={ <UserInplay/> } />
-          <Route path="/user-casino" element={ <UserCasino/> } />
-          <Route path="/user-start-bet" element={ <UserBet/> } /> */}
+          <Route path="/user-ledger" element={<UserMyLedger />} />
+          <Route path="/user-complete-game" element={<UserCompletegame />} />
+          <Route path="/user-profile" element={<UserProfile />} />
+          <Route path="/user-inplay" element={<UserInplay />} />
+          <Route path="/user-casino" element={<UserCasino />} />
+          <Route path="/user-start-bet" element={<UserBet />} /> */}
           {/* ////////end user panel //////////// */}\
           {/* ////////control panel //////////// */}
           <Route path="/super-admin/login" element={<ControlLogin />} />
@@ -117,6 +127,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/" element={<MainLayout />}>
             <Route path="/dashboard" index element={<Dashboard />} />
+
+            {/* SubadminList */}
             <Route
               path="/sub-admin"
               index
@@ -129,6 +141,13 @@ function App() {
                 />
               }
             />
+            <Route path="/subadmin/create" element={<CreateNewSubadmin />} />
+            <Route path="/subadmin/update" element={<UpdateSubadmin />} />
+            <Route
+              path="/subadmin/limitUpdate"
+              element={<SubadminLimitUpdate />}
+            />
+            {/* MasterList */}
             <Route
               path="/masters"
               index
@@ -140,6 +159,10 @@ function App() {
                 />
               }
             />
+            <Route path="/master/create" element={<CreateNewMaster />} />
+            <Route path="/master/update" element={<UpdateMaster />} />
+            <Route path="/master/limitUpdate" element={<MasterLimitUpdate />} />
+            {/* SuperAgenetList */}
             <Route
               path="/superagents"
               index
@@ -152,6 +175,17 @@ function App() {
               }
             />
             <Route
+              path="/superAgent/create"
+              element={<CreateNewSuperAgent />}
+            />
+            <Route path="/superAgent/update" element={<UpdateSuperAgent />} />
+            <Route
+              path="/superAgent/limitUpdate"
+              element={<SuperAgentLimitUpdate />}
+            />
+
+            {/* AgentMaster */}
+            <Route
               path="/agents"
               index
               element={
@@ -162,6 +196,14 @@ function App() {
                 />
               }
             />
+            <Route path="/agent/create" element={<CreateNewAgent />} />
+            <Route path="/agent/update" element={<UpdateAgent />} />
+            <Route
+              path="/agent/limitUpdate"
+              element={<AgentMasterLimitUpdate />}
+            />
+
+            {/* ClientMasterlist */}
             <Route
               path="/clients"
               index
@@ -173,45 +215,11 @@ function App() {
                 />
               }
             />
-            {/* <Route path="/create" index element={<CreateUser />} /> */}
-
+            <Route path="/client/create" element={<CreateNewClientMaster />} />
+            <Route path="/client/update" element={<UpdateClient />} />
             <Route
-              path="/agents/create-agent"
-              index
-              element={<AgentCreate />}
-            />
-            <Route
-              path="/masters/create-master"
-              index
-              element={<MasterCreate />}
-            />
-            <Route
-              path="/superagents/create-superagent"
-              element={<SuperAgentCreate />}
-            />
-            <Route
-              path="/clients/create-client"
-              index
-              element={<ClinetCreate />}
-            />
-
-            <Route
-              path="/superagents/limit-superagent"
-              element={
-                <SuperAgentLimitUpdate title="Super Agent Update Limit" />
-              }
-            />
-            <Route
-              path="/masters/limit-master"
-              element={<MasterLimitUpdate title="Master Update Limit" />}
-            />
-            <Route
-              path="/agents/limit-agent"
-              element={<AgentLimitUpdate title=" Agent Update Limit" />}
-            />
-            <Route
-              path="/clients/limit-client"
-              element={<ClientLimitUpdate title="Client Update Limit" />}
+              path="/client/limitUpdate"
+              element={<ClientMasterLimitUpdate />}
             />
 
             <Route path="/inplay" index element={<InPlay />} />
