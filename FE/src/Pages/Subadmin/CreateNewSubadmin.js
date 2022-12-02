@@ -83,7 +83,7 @@ export default function CreateNewSubadmin() {
     <>
       {/* <Sidebar /> */}
       <form onSubmit={(e) => myFormData(e)}>
-        {/* <div className="content-wrapper"> */}
+        <div className="content-wrapper">
         <section className="content">
           <div className="container-fluid">
             <div className="row mb-2">
@@ -335,7 +335,7 @@ export default function CreateNewSubadmin() {
           </div>
           <br />
         </section>
-        {/* </div> */}
+        </div>
       </form>
     </>
   );

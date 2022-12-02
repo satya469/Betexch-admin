@@ -65,7 +65,7 @@ export default function AgentMasterLimitUpdate() {
   return (
     <>
       {/* <Sidebar /> */}
-      {/* <div className="content-wrapper"> */}
+      <div className="content-wrapper">
       <section className="content-header">
         <div className="container-fluid">
           <div className="row">
@@ -162,7 +162,7 @@ export default function AgentMasterLimitUpdate() {
           </div>
         </div>
       </section>
-      {/* </div> */}
+      </div>
     </>
   );
 }

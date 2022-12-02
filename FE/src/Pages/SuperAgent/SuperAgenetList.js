@@ -229,7 +229,7 @@ export default function SuperAgenetList() {
                             <th>Super</th>
                             <th>Password</th>
                             <th>Contact</th>
-                            <th>D.O.J. </th>
+                            {/* <th>D.O.J. </th> */}
                             <th>Share</th>
                             <th>Com</th>
                             <th>Limit</th>

@@ -120,7 +120,7 @@ export default function SubadminList() {
   return (
     <>
       {/* <Sidebar /> */}
-      {/* <div className="content-wrapper"> */}
+      <div className="content-wrapper">
       <section cla-ssName="content-header">
         <div className="container-fluid">
           <div className="row mb-2">
@@ -219,7 +219,7 @@ export default function SubadminList() {
                           <th>Name</th>
                           <th>Password</th>
                           <th>Contact</th>
-                          <th>D.O.J. </th>
+                          {/* <th>D.O.J. </th> */}
                           <th>Share</th>
                           <th>Com</th>
                           <th>Limit</th>
@@ -280,7 +280,7 @@ export default function SubadminList() {
                                     <td>{item.name}</td>
                                     <td>{item.password}</td>
                                     <td>{item.contact_no}</td>
-                                    <td>{item.createdAt.slice(0, 10)}</td>
+                                    {/* <td>{item.createdAt.slice(0, 10)}</td> */}
                                     <td>{item.share}</td>
                                     <td>{item.commission}</td>
                                     <td>{item.limit}</td>
@@ -337,7 +337,7 @@ export default function SubadminList() {
         </div>
       </section>
 
-      {/* </div> */}
+      </div>
 
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>

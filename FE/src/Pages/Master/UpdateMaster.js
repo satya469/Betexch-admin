@@ -57,7 +57,7 @@ export default function UpdateMaster() {
   return (
     <>
       {/* <Sidebar /> */}
-      {/* <div className="content-wrapper"> */}
+      <div className="content-wrapper">
       <section className="content-header">
         <div className="container-fluid">
           <div className="row mb-2">
@@ -275,7 +275,7 @@ export default function UpdateMaster() {
 
         <br />
       </section>
-      {/* </div> */}
+      </div>
     </>
   );
 }

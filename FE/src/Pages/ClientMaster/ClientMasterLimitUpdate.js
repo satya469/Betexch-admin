@@ -69,7 +69,7 @@ export default function ClientMasterLimitUpdate() {
   return (
     <>
       {/* <Sidebar /> */}
-      {/* <div className="content-wrapper"> */}
+      <div className="content-wrapper">
       <section className="content-header">
         <div className="container-fluid">
           <div className="row">
@@ -166,7 +166,7 @@ export default function ClientMasterLimitUpdate() {
           </div>
         </div>
       </section>
-      {/* </div> */}
+      </div>
     </>
   );
 }

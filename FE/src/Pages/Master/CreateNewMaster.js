@@ -53,7 +53,7 @@ export default function CreateNewMaster() {
         setIsloader(false);
         const data = response.data;
         if (data.success) {
-          navigate(`/master`);
+          navigate(`/masters`);
           toast.success(data.message);
           e.target.reset();
         } else {
@@ -83,7 +83,7 @@ export default function CreateNewMaster() {
     <>
       {/* <Sidebar /> */}
       <form onSubmit={(e) => myFormData(e)}>
-        {/* <div className="content-wrapper"> */}
+        <div className="content-wrapper">
         <section className="content-header">
           <div className="container-fluid">
             <div className="row mb-2">
@@ -337,7 +337,7 @@ export default function CreateNewMaster() {
 
           <br />
         </section>
-        {/* </div> */}
+        </div>
       </form>
     </>
   );

@@ -115,7 +115,7 @@ export default function MasterList() {
   return (
     <>
       {/* <Sidebar /> */}
-      {/* <div className="content-wrapper"> */}
+      <div className="content-wrapper">
       <section className="content-header">
         <div className="container-fluid">
           <div className="row mb-2">
@@ -219,7 +219,7 @@ export default function MasterList() {
                           <th>Super</th>
                           <th>Password</th>
                           <th>Contact</th>
-                          <th>D.O.J. </th>
+                          {/* <th>D.O.J. </th> */}
                           <th>Share</th>
                           <th>Com</th>
                           <th>Limit</th>
@@ -281,7 +281,7 @@ export default function MasterList() {
                                     <td>{item.createdBy}</td>
                                     <td>{item.password}</td>
                                     <td>{item.contact_no}</td>
-                                    <td>{item.createdAt.slice(0, 10)}</td>
+                                    {/* <td>{item.createdAt.slice(0, 10)}</td> */}
                                     <td>{item.share}</td>
 
                                     <td>{item.commission}</td>
@@ -339,6 +339,7 @@ export default function MasterList() {
         </div>
       </section>
       <CommanPopUpModal ClickName="MasterClick" />
+      </div>
     </>
   );
 }

@@ -89,7 +89,7 @@ export default function CreateNewClientMaster() {
     <>
       {/* <Sidebar /> */}
       <form onSubmit={(e) => myFormData(e)}>
-        {/* <div className="content-wrapper"> */}
+        <div className="content-wrapper">
         <section className="content-header">
           <div className="container-fluid">
             <div className="row mb-2">
@@ -342,7 +342,7 @@ export default function CreateNewClientMaster() {
           </div>
           <br />
         </section>
-        {/* </div> */}
+        </div>
       </form>
     </>
   );
