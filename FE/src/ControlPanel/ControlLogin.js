@@ -44,7 +44,7 @@ export default function ControlLogin() {
       <div className="hold-transition login-page">
         <div className="login-box">
           <h2 className="text-center">
-            Betexch <span>AllAgent</span>
+            Betexch <span>Super Admin</span>
           </h2>
           <div className="card card-primary">
             <div className="card-body">

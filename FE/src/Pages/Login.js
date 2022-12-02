@@ -87,7 +87,7 @@ export default function Login() {
                   />
                   <div className="input-group-append">
                     <div className="input-group-text">
-                      <span className="fas fa-lock" />
+                      <Link to="/super-admin/login" class="fas fa-lock"></Link>
                     </div>
                   </div>
                 </div>
