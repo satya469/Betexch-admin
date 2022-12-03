@@ -1088,8 +1088,8 @@ app.post(
   upload.none(),
   async (req, res) => {
     try {
-      const { uid, limit, value } = req.body;
-      const owner_uid = req.user.uid;
+      const { uid, limit, value, limitUpdatedBy } = req.body;
+      const owner_uid = limitUpdatedBy;
       const ownerData = await User.findOne({ uid: owner_uid });
       const oldUser = await User.findOne({ uid: uid });
       let limits = 0;
@@ -1138,8 +1138,8 @@ app.post(
   upload.none(),
   async (req, res) => {
     try {
-      const { uid, limit, value } = req.body;
-      const owner_uid = req.user.uid;
+      const { uid, limit, value, limitUpdatedBy } = req.body;
+      const owner_uid = limitUpdatedBy;
       const ownerData = await User.findOne({ uid: owner_uid });
       const oldUser = await User.findOne({ uid: uid });
       let limits = 0;
@@ -1188,8 +1188,8 @@ app.post(
   upload.none(),
   async (req, res) => {
     try {
-      const { uid, limit, value } = req.body;
-      const owner_uid = req.user.uid;
+      const { uid, limit, value, limitUpdatedBy } = req.body;
+      const owner_uid = limitUpdatedBy;
       const ownerData = await User.findOne({ uid: owner_uid });
       const oldUser = await User.findOne({ uid: uid });
       let limits = 0;
@@ -1241,9 +1241,9 @@ app.post(
   upload.none(),
   async (req, res) => {
     try {
-      const { uid, limit, value } = req.body;
+      const { uid, limit, value, limitUpdatedBy } = req.body;
 
-      const owner_uid = req.user.uid;
+      const owner_uid = limitUpdatedBy;
       const ownerData = await User.findOne({ uid: owner_uid });
       const oldUser = await User.findOne({ uid: uid });
       let limits = 0;
