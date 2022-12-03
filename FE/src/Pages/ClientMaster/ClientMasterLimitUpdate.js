@@ -23,9 +23,9 @@ export default function ClientMasterLimitUpdate() {
     userlist();
   }, [DropDownName]);
   const userProfile = async () => {
-    axios.get(`/user-profile`, options).then((res) => {
+    axios.post(`/user-profile-byId`, data, options).then((res) => {
       const data = res.data.data;
-      console.log(data);
+      // console.log(data);
       setLimit(data.limit);
     });
   };
@@ -36,7 +36,7 @@ export default function ClientMasterLimitUpdate() {
       const data = res.data.data;
       console.log("dropdownvalue=====", DropDownName);
       if (DropDownName == "") {
-        return
+        return;
         // setData(data);
       } else {
         setData([]);
@@ -55,12 +55,8 @@ export default function ClientMasterLimitUpdate() {
     const dataof = {
       userId: e.target.value,
     };
-    userProfile(dataof)
-    axios.post(`/user-profile-byId`, data, options).then((res) => {
-      const data = res.data.data;
-      // console.log(data);
-      setLimit(data.limit);
-    });
+    userProfile(dataof);
+
     setDropDownName({ ...DropDownName, UIname: e.target.value });
     setdropDownValidation(false);
   };
@@ -89,7 +85,7 @@ export default function ClientMasterLimitUpdate() {
         options
       );
       if (response.data.success) {
-        userProfile(dataof)
+        userProfile(dataof);
         // setDropDownName("")
         const data = response.data;
         if (data.success) {
