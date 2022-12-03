@@ -15,13 +15,13 @@ export default function SuperAgentSidebar() {
             <li className="nav-item">
               <NavLink to="agents" className="nav-link">
                 <i className="nav-icon fas fa-th" />
-                <p>Agents Master</p>
+                <p>Agent</p>
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="clients" className="nav-link">
                 <i className="nav-icon fas fa-th" />
-                <p>Client Master</p>
+                <p>Client</p>
               </NavLink>
             </li>
             <li className="nav-header">Games</li>

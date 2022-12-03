@@ -18,6 +18,7 @@ export default function Dashboard() {
 
         <ToastContainer />
         {/* <OrderReceivedTable /> */}
+        <div className="content-wrapper">
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-3 col-6">
@@ -77,6 +78,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </>
     );

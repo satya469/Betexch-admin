@@ -9,13 +9,13 @@ export default function AdminSidebar() {
       <li className="nav-item">
         <NavLink to="sub-admin" className="nav-link">
           <i className="nav-icon fas fa-th" />
-          <p>Sub Admin Agent Master</p>
+          <p>Sub Admin </p>
         </NavLink>
       </li>
       <li className="nav-item">
         <NavLink to="masters" className="nav-link">
           <i className="nav-icon fas fa-th" />
-          <p>Master Agent Master</p>
+          <p>Master </p>
         </NavLink>
       </li>
 
@@ -23,19 +23,19 @@ export default function AdminSidebar() {
       <li className="nav-item">
         <NavLink to="superagents" className="nav-link">
           <i className="nav-icon fas fa-th" />
-          <p>Super Agent Master</p>
+          <p>SuperAgent</p>
         </NavLink>
       </li>
       <li className="nav-item">
         <NavLink to="agents" className="nav-link">
           <i className="nav-icon fas fa-th" />
-          <p>Agents Master</p>
+          <p>Agent </p>
         </NavLink>
       </li>
       <li className="nav-item">
         <NavLink to="clients" className="nav-link">
           <i className="nav-icon fas fa-th" />
-          <p>Client Master</p>
+          <p>Client </p>
         </NavLink>
       </li>
       <li className="nav-header">Games</li>

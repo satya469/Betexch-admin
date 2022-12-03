@@ -87,6 +87,7 @@ const CommanPopUpModal = ({ ClickName }) => {
 
   const GetFormData = async (e) => {
     e.preventDefault();
+
     const data = new FormData(e.target);
     const SelecteName = Object.fromEntries(data.entries());
     console.log("final body", SelecteName);
@@ -175,6 +176,7 @@ const CommanPopUpModal = ({ ClickName }) => {
                   id="submitBtn"
                   name="submit"
                   class="btn btn-primary"
+                  data-bs-dismiss="modal"
                 >
                   Create
                 </button>

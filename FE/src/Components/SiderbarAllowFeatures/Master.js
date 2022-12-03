@@ -15,19 +15,19 @@ export default function MasterSidebar() {
             <li className="nav-item">
               <NavLink to="superagents" className="nav-link">
                 <i className="nav-icon fas fa-th" />
-                <p>Super Agent Master</p>
+                <p>SuperAgent </p>
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="agents" className="nav-link">
                 <i className="nav-icon fas fa-th" />
-                <p>Agents Master</p>
+                <p>Agents </p>
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink to="clients" className="nav-link">
                 <i className="nav-icon fas fa-th" />
-                <p>Client Master</p>
+                <p>Client </p>
               </NavLink>
             </li>
             <li className="nav-header">Games</li>

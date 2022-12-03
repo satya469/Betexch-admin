@@ -28,7 +28,6 @@ export default function Sidebar() {
         />
         <span className="brand-text font-weight-light">Betexch</span>
       </Link>
-
       <div className="sidebar">
         <nav className="mt-2">
           <ul
